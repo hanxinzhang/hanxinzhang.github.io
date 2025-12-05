@@ -1,6 +1,6 @@
 ---
-layout: default
-title: "About"
+layout: home
+title: About
 author_profile: true
 permalink: /
 ---
