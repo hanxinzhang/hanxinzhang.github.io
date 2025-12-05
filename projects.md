@@ -20,3 +20,5 @@ A diagnosis EHR, which we refer to as a "sentence", is composed of tens of repea
 2. The start and end of a sentence (```<SOS>```, ```<EOS>```) are not as clearly defined as in natural language modeling because we do not have complete life-long records for each person. Individuals may be enrolled in the data for only a few weeks, months, or years. We use their enrollment dates, when available, as tentative markers for ```<SOS>``` and ```<EOS>```.
 
 3. Diagnoses occur at irregular time intervals, and there is no reason to expect a fixed window between two contiguous words (medical diagnosis codes). Therefore, commonly used language-modeling techniques such as recurrent neural networks (RNNs) and their variants must be adapted to accommodate this irregular temporal structure. Prior approaches include neural ordinary differential equations [^a], time-dependent embeddings [^b], and explicit positional encodings using large-period Fourier features [c].
+
+[^b]: sample cite
