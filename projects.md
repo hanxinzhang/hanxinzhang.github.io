@@ -21,6 +21,10 @@ A diagnosis EHR, which we refer to as a "sentence", is composed of tens of repea
 
 3. Diagnoses occur at irregular time intervals, and there is no reason to expect a fixed window between two contiguous words (medical diagnosis codes). Therefore, commonly used language-modeling techniques such as recurrent neural networks (RNNs) and their variants must be adapted to accommodate this irregular temporal structure. Prior approaches include neural ordinary differential equations [^1], time-dependent embeddings [^2], and explicit positional encodings using large-period Fourier features [^3].
 
+4. The words in a sentence are loosely correlated, especially for EHR data with only a few words. In many cases, people may get sick in a random way. A patient may have infections in their childhood and cardiovascular diseases in their old age, and these two groups of diagnoses may or may not have any correlation. This is very different from modeling natural language, where words in a sentence are expected to be more strongly coupled, grammatically or logically.
+
+5. Some covariates or confounding factors, such as sex, geographic location, and other environmental variables, may also influence the sentence embedding. Depending on the target task, we may or may not want a vector representation that incorporates such confounding information. In the current setting, we aim to encode a patient's EHR into a sex-irrelevant representation, meaning that the embedding should capture the patient's underlying health state but not their sex. Furthermore, from this representation, we should still be able to reconstruct the patient's diagnostic history while treating sex as a covariate.
+
 ### References
 
 [^1]: Chen, T. Q., Rubanova, Y., Bettencourt, J., and Duvenaud, D. K. (2018). Neural ordinary differential equations. In *Advances in Neural Information Pro-cessing Systems*, pages 6572–6583.
