@@ -16,3 +16,7 @@ An electronic health record (EHR) systematically documents a patient’s diagnos
 A diagnosis EHR, which we refer to as a "sentence", is composed of tens of repeating segment (each a "word" of the form ```Diagnosis code:Age:Time```). It is worth noting several key characteristics of this medical code sentence:
 
 1. The length or number of segments is not fixed, as in most language models, but the variance may be larger. A large portion of the population has only one or a few diagnosis records, whereas some individuals have hundreds or even thousands. In our sample dataset, the typical sequence length ranges from about 1 to 100 words.
+
+2. The start and end of a sentence (```<SOS>```, ```<EOS>```) are not as clearly defined as in natural language modeling because we do not have complete life-long records for each person. Individuals may be enrolled in the data for only a few weeks, months, or years. We use their enrollment dates, when available, as tentative markers for ```<SOS>``` and ```<EOS>```.
+
+3. Diagnoses occur at irregular time intervals, and there is no reason to expect a fixed window between two contiguous words (medical diagnosis codes). Therefore, commonly used language-modeling techniques such as recurrent neural networks (RNNs) and their variants must be adapted to accommodate this irregular temporal structure. Prior approaches include neural ordinary differential equations [^a], time-dependent embeddings [^b], and explicit positional encodings using large-period Fourier features [c].
