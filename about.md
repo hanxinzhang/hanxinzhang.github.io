@@ -12,5 +12,6 @@ My interest: machine learning and its application in health and medicine, deep l
 ## Work Experiences
 
 **Resident Physician in Neurology (Research Track)**
+
 University of Pittsburgh Medical Center and the Department of Neurology, University of Pittsburgh
 School of Medicine, Pittsburgh, PA
