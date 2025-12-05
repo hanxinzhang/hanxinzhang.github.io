@@ -1,8 +1,6 @@
----
 layout: page
 title: "About"
 permalink: /about
----
 
 I am a computational biologist and modeler. My research focuses on machine understanding of large-scale health data, including insurance claims, electronic health records, textual and multi-omics data.
 
