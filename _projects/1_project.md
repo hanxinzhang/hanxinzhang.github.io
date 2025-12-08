@@ -28,7 +28,14 @@ A diagnosis EHR, which we refer to as a "sentence", is composed of tens of repea
 
 5. Some covariates or confounding factors, such as sex, geographic location, and other environmental variables, may also influence the sentence embedding. Depending on the target task, we may or may not want a vector representation that incorporates such confounding information. In the current setting, we aim to encode a patient's EHR into a sex-irrelevant representation, meaning that the embedding should capture the patient's underlying health state but not their sex. Furthermore, from this representation, we should still be able to reconstruct the patient's diagnostic history while treating sex as a covariate.
 
-Mathematically, the goal of this project is to learn a pair of encoder $$f$$ and decoder $$g$$, and embed patients' EHRs into a latent space representing their intrinsic health states:
+Mathematically, the goal of this project is to learn a pair of encoder $f$ and decoder $g$, and embed patients' EHRs into a latent space representing their intrinsic health states:
+
+\begin{align}
+z &= f(y) \\
+\hat y &= g(z)
+\end{align}
+
+where $y \sim \mathrm{Pop} $ is a sample of EHR diagnosis sentence. Hopefully, with such latent variable, we are able to reconstruct, predict, impute, and aid downstream tasks.
 
 ### References
 
