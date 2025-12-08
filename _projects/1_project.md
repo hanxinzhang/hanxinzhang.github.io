@@ -10,6 +10,8 @@ related_publications: false
 
 ## Using EHR claims data as an example  
 
+##
+
 ### Introduction
 
 A digital twin in healthcare research is a dynamic virtual model of an individual patient or biological system, created by integrating clinical, biological, and sensor data with computational simulations. Continuously updated to reflect a patient’s real-time state, it allows researchers to model disease progression, test interventions in silico, and predict treatment responses. This approach supports precision medicine by enabling more personalized and data-driven healthcare decisions.
@@ -41,7 +43,7 @@ where $y \sim \mathrm{Pop}$ is a sample of an EHR diagnosis sentence. $\mathrm{P
 
 ### Data preparation
 
-The dataset used in this study comes from the IBM MarketScan\textsuperscript{\tiny\textregistered} research database family [^4]. It contains diagnosis histories for more than 150 million unique U.S. patients, collected and manually curated by several large insurers. Diagnoses are recorded using ICD (International Classification of Diseases) codes, which we mapped into roughly 600 consolidated conditions and diseases for simplicity of the vocabulary. For the current training phase, we used 100 million patients whose EHR ‘sentence’ lengths range from 1 to 100, due to limitations in model capacity—long and loosely correlated sequences are difficult for the network to learn effectively. We held out 50,000 patients for validation and model tuning, and reserved another 50,000 for final testing.
+The dataset used in this study comes from the IBM MarketScan research database family [^4]. It contains diagnosis histories for more than 150 million unique U.S. patients, collected and manually curated by several large insurers. Diagnoses are recorded using ICD (International Classification of Diseases) codes, which we mapped into roughly 600 consolidated conditions and diseases for simplicity of the vocabulary. For the current training phase, we used 100 million patients whose EHR ‘sentence’ lengths range from 1 to 100, due to limitations in model capacity—long and loosely correlated sequences are difficult for the network to learn effectively. We held out 50,000 patients for validation and model tuning, and reserved another 50,000 for final testing.
 
 ### Model 0: Autoencoder
 
