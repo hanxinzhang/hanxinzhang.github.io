@@ -22,14 +22,14 @@ I am a computational biologist and modeler. My research focuses on machine under
 
 My interest: machine learning and its application in health and medicine, deep learning, computational biology and genetics, Bayesian modeling
 
-## Work Experience
+**Work Experience**
 
 Resident Physician in Neurology (Research Track)
 
 University of Pittsburgh Medical Center and the Department of Neurology, University of Pittsburgh
 School of Medicine, Pittsburgh, PA
 
-## Education
+**Education**
 
 DO, Kansas City University, Kansas City, MO, 2025
 
