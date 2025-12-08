@@ -10,7 +10,7 @@ related_publications: false
 
 ## Using EHR claims data as an example  
 
-##
+\
 
 ### Introduction
 
@@ -47,7 +47,15 @@ The dataset used in this study comes from the IBM MarketScan research database f
 
 ### Model 0: Autoencoder
 
+A naive baseline for the task described above is a conditional autoencoder (AE):
 
+$$
+\begin{align}
+\Phi^, \Psi^ = \arg\min_{\Phi, \Psi} ; \mathbb{E}{x, y \sim \mathrm{Pop}} , \mathbb{E}{z \sim P_{\Phi}(z \mid y, x)} , \big[ -\log P_{\Psi}(y \mid z, x) \big].
+\end{align}
+$$
+
+Here, $y$ denotes an EHR diagnosis sentence, $x$ represents a confounding variable (e.g., sex), and $z$ is the latent representation of the EHR. The parameters $\Phi$ and $\Psi$ correspond to the encoder and decoder, respectively. Figure 1 illustrates the architecture of the autoencoder model. The multi-head gated recurrent units (GRUs) consist of several independent GRUs [^5], whose outputs are concatenated through a final aggregation layer. Similar design principles appear in bidirectional recurrent neural networks (RNNs) [^6], where two independent RNNs operating in opposite directions are stacked and their hidden states concatenated. Likewise, the Transformer model [^7] adopts a multi-head structure in which multiple self-attention heads are combined via concatenation.
 
 ### References
 
@@ -58,3 +66,9 @@ The dataset used in this study comes from the IBM MarketScan research database f
 [^3]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems*, pages 5998–6008.
 
 [^4]: IBM Watson Health (2019). IBM MarketScan Research Databases
+
+[^5]: Cho, K., Van Merri¨enboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., and Bengio, Y. (2014). Learning phrase representations using rnn encoder-decoder for statistical machine translation. *arXiv preprint arXiv:1406.1078.*
+
+[^6]: Schuster, M. and Paliwal, K. K. (1997). Bidirectional recurrent neural networks. *IEEE Transactions on Signal Processing*, 45(11):2673–2681.
+
+[^7]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems*, pages 5998–6008.
