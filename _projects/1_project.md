@@ -1,12 +1,14 @@
 ---
 layout: page
 title: "Digital mirror universe: advancing the digital twin framework for multiscale modeling"
-description: Using EHR claims data as an example
+description: 
 img: assets/img/12.jpg
 importance: 1
 category:
 related_publications: false
 ---
+
+## Using EHR claims data as an example
 
 ### Introduction
 
@@ -14,7 +16,7 @@ A digital twin in healthcare research is a dynamic virtual model of an individua
 
 An electronic health record (EHR) systematically documents a patient’s diagnostic history, procedures, prescriptions, and other clinical information, reflecting their health status as it evolves over time and across care settings. This study aims to develop a model that encodes a subset of a patient's EHR, represented by diagnosis codes (claims), into a stable, time-invariant vector embedding. This embedding serves as a latent digital representation of the patient's underlying health state. Collectively, these embeddings form a structured space that represents the broader patient population, extending the concept of a digital twin. We refer to this as a **digital mirror universe**: a virtual representation of the entire population that can be used for multiple tasks, including disease risk prediction, missing-data imputation, synthetic EHR generation, and downstream integration with genetic and other biomedical data.
 
-A diagnosis EHR, which we refer to as a "sentence", is composed of tens of repeating segment (each a "word" of the form ```Diagnosis code:Age:Time```). It is worth noting several key characteristics of this medical code sentence:
+A diagnosis EHR, which we refer to as a "sentence", is composed of tens of repeating segment (each a "word" of the form ```Diagnosis_code:Age:Time```). It is worth noting several key characteristics of this medical code sentence:
 
 1. The length or number of segments is not fixed, as in most language models, but the variance may be larger. A large portion of the population has only one or a few diagnosis records, whereas some individuals have hundreds or even thousands. In our sample dataset, the typical sequence length ranges from about 1 to 100 words.
 
