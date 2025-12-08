@@ -2,7 +2,7 @@
 layout: page
 title: "Digital mirror universe: advancing the digital twin framework for multiscale modeling"
 description: Using EHR claims data as an example
-img:
+img: assets/img/12.jpg
 importance: 1
 category:
 related_publications: false
