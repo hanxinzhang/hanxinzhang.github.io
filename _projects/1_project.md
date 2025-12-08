@@ -1,7 +1,7 @@
 ---
 layout: page
-title: project 1
-description: with background image
+title: Digital mirror universe: advancing the digital twin framework for multiscale modeling
+description: Using EHR claims data as an example
 img: assets/img/12.jpg
 importance: 1
 category: work
