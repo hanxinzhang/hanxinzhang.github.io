@@ -30,12 +30,14 @@ A diagnosis EHR, which we refer to as a "sentence", is composed of tens of repea
 
 Mathematically, the goal of this project is to learn a pair of encoder $f$ and decoder $g$, and embed patients' EHRs into a latent space representing their intrinsic health states:
 
+$$
 \begin{alignat}{2}
 z &= f(y) \\
 \hat y &= g(z)
 \end{alignat}
+$$
 
-where $y \sim \mathrm{Pop} $ is a sample of EHR diagnosis sentence. Hopefully, with such latent variable, we are able to reconstruct, predict, impute, and aid downstream tasks.
+where $y \sim \mathrm{Pop} $ is a sample of an EHR diagnosis sentence. With this latent variable $z$, we aim to reconstruct, predict, impute, and support downstream tasks. 
 
 ### References
 
