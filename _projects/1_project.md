@@ -10,6 +10,7 @@ related_publications: false
 
 ## Using EHR claims data as an example
 
+
 ### Introduction
 
 A digital twin in healthcare research is a dynamic virtual model of an individual patient or biological system, created by integrating clinical, biological, and sensor data with computational simulations. Continuously updated to reflect a patient’s real-time state, it allows researchers to model disease progression, test interventions in silico, and predict treatment responses. This approach supports precision medicine by enabling more personalized and data-driven healthcare decisions.
@@ -37,7 +38,7 @@ z &= f(y) \\
 \end{alignat}
 $$
 
-where $y \sim \mathrm{Pop} $ is a sample of an EHR diagnosis sentence. With this latent variable $z$, we aim to reconstruct, predict, impute, and support downstream tasks. 
+where $y \sim \mathrm{Pop}$ is a sample of an EHR diagnosis sentence. $\mathrm{Pop}$ denotes the distribution of the patient population. With this latent variable $z$, we aim to reconstruct, predict, impute, and support downstream tasks. We also aim to shape the distribution of $z$ so that it is well-structured for efficient sampling. The resulting latent variable space $z \sim \mathrm{Lat}$ is what we referred as a **digital mirror universe**, which contains the information of the patient population and captures its characteristics.
 
 ### References
 
