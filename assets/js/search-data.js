@@ -21,9 +21,9 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "projects-",
-          title: '',
-          description: "",
+            },},{id: "projects-digital-mirror-universe-advancing-the-digital-twin-framework-for-multiscale-modeling",
+          title: 'Digital mirror universe: advancing the digital twin framework for multiscale modeling',
+          description: "Using EHR claims data as an example",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
             },},{
