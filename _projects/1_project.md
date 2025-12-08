@@ -8,8 +8,7 @@ category:
 related_publications: false
 ---
 
-## Using EHR claims data as an example
-
+## Using EHR claims data as an example  
 
 ### Introduction
 
@@ -32,13 +31,21 @@ A diagnosis EHR, which we refer to as a "sentence", is composed of tens of repea
 Mathematically, the goal of this project is to learn a pair of encoder $f$ and decoder $g$, and embed patients' EHRs into a latent space representing their intrinsic health states:
 
 $$
-\begin{alignat}{2}
+\begin{align}
 z &= f(y) \\
 \hat y &= g(z)
-\end{alignat}
+\end{align}
 $$
 
 where $y \sim \mathrm{Pop}$ is a sample of an EHR diagnosis sentence. $\mathrm{Pop}$ denotes the distribution of the patient population. With this latent variable $z$, we aim to reconstruct, predict, impute, and support downstream tasks. We also aim to shape the distribution of $z$ so that it is well-structured for efficient sampling. The resulting latent variable space $z \sim \mathrm{Lat}$ is what we referred as a **digital mirror universe**, which contains the information of the patient population and captures its characteristics.
+
+### Data preparation
+
+The dataset used in this study comes from the IBM MarketScan\textsuperscript{\tiny\textregistered} research database family [^4]. It contains diagnosis histories for more than 150 million unique U.S. patients, collected and manually curated by several large insurers. Diagnoses are recorded using ICD (International Classification of Diseases) codes, which we mapped into roughly 600 consolidated conditions and diseases for simplicity of the vocabulary. For the current training phase, we used 100 million patients whose EHR ‘sentence’ lengths range from 1 to 100, due to limitations in model capacity—long and loosely correlated sequences are difficult for the network to learn effectively. We held out 50,000 patients for validation and model tuning, and reserved another 50,000 for final testing.
+
+### Model 0: Autoencoder
+
+
 
 ### References
 
@@ -47,3 +54,5 @@ where $y \sim \mathrm{Pop}$ is a sample of an EHR diagnosis sentence. $\mathrm{P
 [^2]: Li, Y., Du, N., and Bengio, S. (2017). Time-dependent representation for neural event sequence prediction. *arXiv preprint arXiv:1708.00065.*
 
 [^3]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems*, pages 5998–6008.
+
+[^4]: IBM Watson Health (2019). IBM MarketScan Research Databases
