@@ -51,7 +51,7 @@ A naive baseline for the task described above is a conditional autoencoder (AE):
 
 $$
 \begin{align}
-\Phi^*, \Psi^* &= \arg\min_{\Phi, \Psi} \mathbb{E}_{x, y \sim \mathrm{Pop}}\mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x).
+\Phi^*, \Psi^* &= \mathop{\arg \min}\limits_{\Phi, \Psi} \mathbb{E}_{x, y \sim \mathrm{Pop}}\mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x).
 \end{align}
 $$
 
