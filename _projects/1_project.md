@@ -10,7 +10,7 @@ related_publications: false
 
 ## Using EHR claims data as an example  
 
-\
+<br>
 
 ### Introduction
 
@@ -34,8 +34,8 @@ Mathematically, the goal of this project is to learn a pair of encoder $f$ and d
 
 $$
 \begin{align}
-z &= f(y) \\
-\hat y &= g(z)
+z &= f(y), \\
+\hat y &= g(z),
 \end{align}
 $$
 
@@ -51,7 +51,7 @@ A naive baseline for the task described above is a conditional autoencoder (AE):
 
 $$
 \begin{align}
-\Phi^, \Psi^ = \arg\min_{\Phi, \Psi} ; \mathbb{E}{x, y \sim \mathrm{Pop}} , \mathbb{E}{z \sim P_{\Phi}(z \mid y, x)} , \big[ -\log P_{\Psi}(y \mid z, x) \big].
+\Phi^*, \Psi^* &= \argmin_{\Phi, \Psi} \E_{x, y \sim \mathrm{Pop}}\E_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x).
 \end{align}
 $$
 
