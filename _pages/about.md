@@ -36,3 +36,5 @@ DO, Kansas City University, Kansas City, MO, 2025
 PhD, The University of Chicago, Chicago, IL, 2021
 
 BS, Cornell University, Ithaca, NY, 2016
+
+BS, Shanghai Jiao Tong University, Shanghai, China, 2016
