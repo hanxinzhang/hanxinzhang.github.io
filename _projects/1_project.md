@@ -69,7 +69,7 @@ Here, $y$ denotes an EHR diagnosis sentence, $x$ represents a confounding variab
 
 <div style="text-align: center;">
   <div style="display: inline-block; text-align: left; width: 600px;">
-      Figure 1. The structure of an autoencoder model. Both the encoder and the decoder are built with multi-head GRUs. The output of all heads of the encoder are concatenated into the latent variable $z$ and passed to the decoder, head to head, to generate the conditional distribution $P(y|z, x)$ for loss computation.
+      Figure 1. Structure of the autoencoder model. Both the encoder and the decoder are constructed using multi-head GRUs. The outputs from all encoder heads are concatenated to form the latent variable $z$, which is then passed head-to-head to the decoder to generate the conditional distribution $P(y|z, x)$ for loss computation.
   </div>
 </div>
 
@@ -100,7 +100,15 @@ $$
 
 where $$\mathcal{L}_{\mathrm{reg}}$$ is the regularization loss and $$\mathcal{L}_{\mathrm{ae}}$$ is the autoencoder reconstruction loss. Intuitively, the regularizer pulls the latent space toward the target prior $P(z)$ -- typically an isotropic Gaussian -- while the autoencoder term attempts to reconstruct the input from the latent embedding. These two objectives can conflict with each other and may induce failure modes or poor reconstruction [^8] [^9].
 
-Tolstikhin *et al.* proposed the Wasserstein Autoencoder (WAE) [^9] to improve upon the variational autoencoder architecture while preserving many of its desirable properties, including strong reconstruction ability, generative modeling capability, stable training, and a disentangled and interpretable latent space. Unlike the vanilla VAE, the WAE explicitly encourages the continuous marginal distribution \\(P_{\Phi}(z) = \int P_{\Phi}(z|x,y) d \mathrm{Pop}(x,y)\\) to match the prior $P(z)$:
+Tolstikhin *et al.* proposed the Wasserstein Autoencoder (WAE) [^9] to improve upon the variational autoencoder architecture while preserving many of its desirable properties, including strong reconstruction ability, generative modeling capability, stable training, and a disentangled and interpretable latent space. Unlike the vanilla VAE, the WAE explicitly encourages the continuous marginal distribution
+
+$$
+\begin{align}
+P_{\Phi}(z) = \int P_{\Phi}(z|x,y) d \mathrm{Pop}(x,y) 
+\end{align}
+$$
+
+to match the prior $P(z)$:
 
 $$
 \begin{align}
@@ -118,6 +126,30 @@ $$
 \mathcal{D_{\mathrm{W}}}(P_{\Phi}(z), P(z)) &= \frac{1}{K} \sup_{||h||_{L} < K}\mathbb{E}_{z\sim P(z)} h(z) - \mathbb{E}_{z\sim P_{\Phi}(z)} h(z),
 \end{align}
 $$
+
+where $h$ is a discriminator that facilitates the estimation of the Wasserstein-1 metric. The discriminator is pruned to be $K$-Lipschitz via weight clamping, as in the Wasserstein GAN framework [^10].
+
+The architecture of the model is shown in Figure 2. We append a shallow convolutional neural network (CNN) followed by a linear layer after the encoder for two purposes: (1) to disentangle the latent variable for easier embedding into the target space, and (2) to further compress the latent representation. The encoder together with the CNN and linear layers can be viewed as a generator that aims to produce an isotropic Gaussian latent variable $z$. During training, we optimize three loss terms:
+
+$$
+\begin{align}
+\mathcal{L}_{\mathrm{ae}} &= \mathbb{E}_{x, y \sim \mathrm{Batch}}\mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x)\\
+\mathcal{L}_{\mathrm{g}} &= -\lambda\mathbb{E}_{x, y \sim \mathrm{Batch}}\mathbb{E}_{z\sim P_{\Phi}(z|y, x)} h(z)\\
+\mathcal{L}_{\mathrm{d}} &= \lambda\mathbb{E}_{x, y \sim \mathrm{Batch}}\mathbb{E}_{z\sim P_{\Phi}(z|y, x)} h(z) - \mathbb{E}_{z\sim P(z)} h(z)
+\end{align}
+$$
+
+where $P(z)$, the prior or target distribution, is chosen to be an isotropic Gaussian $\mathcal{N}(0, \mathrm{I})$.
+
+<p style="text-align: center;">
+    <img src="/assets/img/WAE_Model_cropped.pdf" width="800px">
+</p>
+
+<div style="text-align: center;">
+  <div style="display: inline-block; text-align: left; width: 800px;">
+      Figure 2. The Wasserstein autoencoder employs an adversarial discriminator to estimate and reduce the distance between the learned latent space and the target distribution. In our setting, the target distribution is chosen to be an isotropic Gaussian with identity covariance.
+  </div>
+</div>
 
 ### References
 
@@ -137,4 +169,7 @@ $$
 
 [^8]: Zhao, S., Song, J., and Ermon, S. (2017). Infovae: Information maxi-mizing variational autoencoders. *arXiv preprint arXiv:1706.02262.*
 
-[^9]: Tolstikhin, I., Bousquet, O., Gelly, S., and Schoelkopf, B. (2017). Wasserstein auto-encoders. *arXiv preprint arXiv:1711.01558.&
+[^9]: Tolstikhin, I., Bousquet, O., Gelly, S., and Schoelkopf, B. (2017). Wasserstein auto-encoders. *arXiv preprint arXiv:1711.01558.*
+
+[^10]: Arjovsky, M., Chintala, S., and Bottou, L. (2017). Wasserstein GAN. *arXiv preprint arXiv:1701.07875.*
+
