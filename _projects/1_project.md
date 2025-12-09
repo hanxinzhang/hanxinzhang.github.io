@@ -151,6 +151,8 @@ where $P(z)$, the prior or target distribution, is chosen to be an isotropic Gau
   </div>
 </div>
 
+<br>
+
 ### Training and preliminary results
 
 We design four tasks -- reconstruction, interpolation, extrapolation, and generation -- to evaluate the capability of the model (Figure 3). The reconstruction task assesses what proportion of information, including both diagnosis–age and time, can be recovered from the latent variable $z$. Note that in Figure 3, diagnosis–age refers to a diagnosis at an exact age; however, in practice, we group ages into 5-year intervals to reduce the vocabulary size and simplify computation.
@@ -166,10 +168,28 @@ The training stage is self-supervised (Figure 3). For sequences with length grea
 </p>
 
 <div style="text-align: center;">
-  <div style="display: inline-block; text-align: left; width: 800px;">
-      Figure 3. The scheme of training phase and desired tasks.
+  <div style="display: inline-block; text-align: left; width: 400px;">
+      Figure 3. The scheme of training phase and desired tasks
   </div>
 </div>
+
+<br>
+
+Given the relatively large training set (100 million patients), a single training epoch is good enough for model convergence and tuning. Figure 4 shows the learning dynamics during the first epoch. All three tasks are evaluated on the validation set. The dimensionality of the latent variable $z$ is 800 for the AE model and 400 for the WAE model; note that the combined hidden state of the encoder remains 800 in both cases, while the CNN and linear layers in the WAE compress it by a factor of two.
+
+We can see that across all three tasks, the WAE model initially underperforms the AE model for two possible reasons. First, the WAE model is more general: in addition to reconstruction and imputation, it also enforces a well-structured latent space to support generation. Second, the latent representation $z$ in the WAE is more compressed (400 vs. 800 dimensions), which further increases the difficulty of the learning task.
+
+<p style="text-align: center;">
+    <img src="/assets/img/trainingValiStats.pdf" width="800px">
+</p>
+
+<div style="text-align: center;">
+  <div style="display: inline-block; text-align: left; width: 400px;">
+      Figure 4. The training stage
+  </div>
+</div>
+
+<br>
 
 ### References
 
