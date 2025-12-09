@@ -55,7 +55,7 @@ $$
 \end{align}
 $$
 
-Here, $y$ denotes an EHR diagnosis sentence, $x$ represents a confounding variable (e.g., sex), and $z$ is the latent representation of the EHR. The parameters $\Phi$ and $\Psi$ correspond to the encoder and decoder, respectively. Figure 1 illustrates the architecture of the autoencoder model. The multi-head gated recurrent units (GRUs) consist of several independent GRUs [^5], whose outputs are concatenated through a final aggregation layer. Similar design principles appear in bidirectional recurrent neural networks (RNNs) [^6], where two independent RNNs operating in opposite directions are stacked and their hidden states concatenated. Likewise, the Transformer model [^7] adopts a multi-head structure in which multiple self-attention heads are combined via concatenation.
+Here, $y$ denotes an EHR diagnosis sentence, $x$ represents a confounding variable (e.g., sex), and $z$ is the latent representation of the EHR. The parameters $\Phi$ and $\Psi$ correspond to the encoder and decoder, respectively. Figure 1 illustrates the architecture of the autoencoder model. The multi-head gated recurrent units (GRUs) consist of several independent GRUs [^5], whose outputs are concatenated through a final aggregation layer. Similar design principles appear in bidirectional recurrent neural networks (RNNs) [^6], where two independent RNNs operating in opposite directions are stacked and their hidden states concatenated. Likewise, the Transformer model [^3] adopts a multi-head structure in which multiple self-attention heads are combined via concatenation.
 
 <p style="text-align: center;">
     <img src="/assets/img/AE_Model_cropped.pdf" width="600px">
@@ -83,7 +83,7 @@ y &= f \circ g (y) = f \circ f^{-1} (y),
 \end{align}
 $$
 
-where the decoder is the inverse of the encoder. There exist many arbitrary choices of latent spaces that can embed our EHR sequences, and there is no natural way to sample from the latent space. Variational autoencoders (VAE) [^8] are known to address this issue by not only encoding the input but also disentangling and embedding it into a well-structured latent space:
+where the decoder is the inverse of the encoder. There exist many arbitrary choices of latent spaces that can embed our EHR sequences, and there is no natural way to sample from the latent space. Variational autoencoders (VAE) [^7] are known to address this issue by not only encoding the input but also disentangling and embedding it into a well-structured latent space:
 
 $$
 \begin{align}
@@ -92,7 +92,7 @@ $$
 \end{align}
 $$
 
-where $\mathcal{L}_{\mathrm{reg}}$ is the regularization loss and \mathcal{L}_{\mathrm{ae}} is the autoencoder reconstruction loss. Intuitively, the regularizer pulls the latent space toward the target prior $P(z)$ -- typically an isotropic Gaussian -- while the autoencoder term attempts to reconstruct the input from the latent embedding. These two objectives can conflict with each other and may induce failure modes or poor reconstruction [^9] [^10].
+where $\mathcal{L}_{\mathrm{reg}}$ is the regularization loss and \mathcal{L}_{\mathrm{ae}} is the autoencoder reconstruction loss. Intuitively, the regularizer pulls the latent space toward the target prior $P(z)$ -- typically an isotropic Gaussian -- while the autoencoder term attempts to reconstruct the input from the latent embedding. These two objectives can conflict with each other and may induce failure modes or poor reconstruction [^8] [^9].
 
 ### References
 
@@ -104,14 +104,12 @@ where $\mathcal{L}_{\mathrm{reg}}$ is the regularization loss and \mathcal{L}_{\
 
 [^4]: IBM Watson Health (2019). IBM MarketScan Research Databases
 
-[^5]: Cho, K., Van Merri¨enboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., and Bengio, Y. (2014). Learning phrase representations using rnn encoder-decoder for statistical machine translation. *arXiv preprint arXiv:1406.1078.*
+[^5]: Cho, K., Van Merrienboer, B., Gulcehre, C., Bahdanau, D., Bougares, F., Schwenk, H., and Bengio, Y. (2014). Learning phrase representations using rnn encoder-decoder for statistical machine translation. *arXiv preprint arXiv:1406.1078.*
 
 [^6]: Schuster, M. and Paliwal, K. K. (1997). Bidirectional recurrent neural networks. *IEEE Transactions on Signal Processing*, 45(11):2673–2681.
 
-[^7]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems*, pages 5998–6008.
+[^7]: Kingma, D. P. and Welling, M. (2013). Auto-encoding varia-tional bayes. *arXiv preprint arXiv:1312.6114.*
 
-[^8]: Kingma, D. P. and Welling, M. (2013). Auto-encoding varia-tional bayes. *arXiv preprint arXiv:1312.6114.*
+[^8]: Zhao, S., Song, J., and Ermon, S. (2017). Infovae: Information maxi-mizing variational autoencoders. *arXiv preprint arXiv:1706.02262.*
 
-[^9]: Zhao, S., Song, J., and Ermon, S. (2017). Infovae: Information maxi-mizing variational autoencoders. *arXiv preprint arXiv:1706.02262.*
-
-[^10]: Tolstikhin, I., Bousquet, O., Gelly, S., and Schoelkopf, B. (2017). Wasserstein auto-encoders. *arXiv preprint arXiv:1711.01558.&
+[^9]: Tolstikhin, I., Bousquet, O., Gelly, S., and Schoelkopf, B. (2017). Wasserstein auto-encoders. *arXiv preprint arXiv:1711.01558.&
