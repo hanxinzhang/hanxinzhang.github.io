@@ -207,7 +207,29 @@ We evaluate the model's performance on reconstruction, interpolation, and extrap
 
 We also evaluate the latent space learned by the WAE model. The mean and covariance of the latent variable $z$ are estimated using 10,000 random samples from the validation set (Figure 6). Although not perfectly matched to the target, most dimensions of $z$ are approximately distributed as independent Gaussian variables, indicating substantial disentanglement. The variances have not yet converged to the target value of 1 (Figure 7, selected dimensions), but we expect closer alignment with additional training epochs.
 
+<p style="text-align: center;">
+    <img src="/assets/img/latentSpaceMean.pdf" width="800px">
+</p>
 
+<div style="text-align: center;">
+  <div style="display: inline-block; text-align: left; width: 200px;">
+      Figure 6. Parameters of the latent space
+  </div>
+</div>
+
+<br>
+
+<p style="text-align: center;">
+    <img src="/assets/img/latentSpaceSelect.pdf" width="800px">
+</p>
+
+<div style="text-align: center;">
+  <div style="display: inline-block; text-align: left; width: 800px;">
+      Figure 7. Selected dimensions of the embedded space after one epoch of training, compared to a standard normal distribution.
+  </div>
+</div>
+
+<br>
 
 ### References
 
