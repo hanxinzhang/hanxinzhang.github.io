@@ -184,12 +184,14 @@ We can see that across all three tasks, the WAE model initially underperforms th
 </p>
 
 <div style="text-align: center;">
-  <div style="display: inline-block; text-align: left; width: 400px;">
+  <div style="display: inline-block; text-align: left; width: 200px;">
       Figure 4. The training stage
   </div>
 </div>
 
 <br>
+
+We evaluate the model's performance on reconstruction, interpolation, and extrapolation after one epoch of training across EHR diagnosis sentences of varying lengths (Figure 5). Interpolation and extrapolation are assessed on sequences longer than 10, with 10% of the codes masked either within the sequence or at the end. Consequently, for EHR diagnosis sentences lengths ranging from 1 to 100, between 1 and 10 codes are masked. After one epoch of training, both the AE and WAE models can perfectly reconstruct EHR sequences shorter than 20, but their performance degrades for sequences longer than 50.
 
 ### References
 
