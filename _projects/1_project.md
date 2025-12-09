@@ -208,11 +208,11 @@ We evaluate the model's performance on reconstruction, interpolation, and extrap
 We also evaluate the latent space learned by the WAE model. The mean and covariance of the latent variable $z$ are estimated using 10,000 random samples from the validation set (Figure 6). Although not perfectly matched to the target, most dimensions of $z$ are approximately distributed as independent Gaussian variables, indicating substantial disentanglement. The variances have not yet converged to the target value of 1 (Figure 7, selected dimensions), but we expect closer alignment with additional training epochs.
 
 <p style="text-align: center;">
-    <img src="/assets/img/latentSpaceMean.pdf" width="400px"> <img src="/assets/img/latentSpaceCov.pdf" width="400px">
+    <img src="/assets/img/latentSpaceMean.pdf" width="400px"> <img src="/assets/img/latentSpaceCov.pdf" width="300px">
 </p>
 
 <div style="text-align: center;">
-  <div style="display: inline-block; text-align: left; width: 200px;">
+  <div style="display: inline-block; text-align: left; width: 300px;">
       Figure 6. Parameters of the latent space
   </div>
 </div>
@@ -230,6 +230,20 @@ We also evaluate the latent space learned by the WAE model. The mean and covaria
 </div>
 
 <br>
+
+### Next steps
+
+The current models and results remain suboptimal. As next steps, we will continue refining the model and tuning hyperparameters based on these findings. We may also need to reconsider several aspects of the current design.
+
+#### Dimensionality choice
+
+The current dimensionality setting may be too large for downstream tasks. We attempted to add a compression module after the encoder in the WAE model. However, a more sophisticated design is needed to achieve better performance.
+
+#### Time, location, sex, and other covariates
+
+We may need to develop better methods to incorporate such information into our model. Depending on the downstream use of the latent variable, we aim to revise the model so that it becomes covariate-invariant. For example, in the current model, enrollment time is encoded in the latent variable; however, for genetic-related tasks, we may not want the latent representation to contain such information, as insurance enrollment dates are not meaningfully associated with genetics.
+
+At the same time, incorporating additional information may improve imputation, prediction, and generation. For instance, geographic location is a useful proxy for many environmental factors, and adding an embedding layer for geographic features may improve model performance on downstream tasks.
 
 ### References
 
