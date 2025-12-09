@@ -88,9 +88,11 @@ where the decoder is the inverse of the encoder. There exist many arbitrary choi
 $$
 \begin{align}
 \Phi^*, \Psi^* &= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}}\left[\mathcal{L}_{\mathrm{reg}} + \mathcal{L}_{\mathrm{ae}}\right] \\
-&= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}} \left[\mathrm{KL}(P_{\Phi}(z|x,y), P(z)) + \mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x) \right]
+&= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}} \left[\mathrm{KL}(P_{\Phi}(z|x,y), P(z)) + \mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x) \right],
 \end{align}
 $$
+
+where $\mathcal{L}_{\mathrm{reg}}$ is the regularization loss and \mathcal{L}_{\mathrm{ae}} is the autoencoder reconstruction loss. Intuitively, the regularizer pulls the latent space toward the target prior $P(z)$ -- typically an isotropic Gaussian -- while the autoencoder term attempts to reconstruct the input from the latent embedding. These two objectives can conflict with each other and may induce failure modes or poor reconstruction [^9] [^10].
 
 ### References
 
@@ -109,3 +111,7 @@ $$
 [^7]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems*, pages 5998–6008.
 
 [^8]: Kingma, D. P. and Welling, M. (2013). Auto-encoding varia-tional bayes. *arXiv preprint arXiv:1312.6114.*
+
+[^9]: Zhao, S., Song, J., and Ermon, S. (2017). Infovae: Information maxi-mizing variational autoencoders. *arXiv preprint arXiv:1706.02262.*
+
+[^10]: Tolstikhin, I., Bousquet, O., Gelly, S., and Schoelkopf, B. (2017). Wasserstein auto-encoders. *arXiv preprint arXiv:1711.01558.&
