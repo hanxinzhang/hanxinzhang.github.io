@@ -94,6 +94,15 @@ $$
 
 where $$\mathcal{L}_{\mathrm{reg}}$$ is the regularization loss and $$\mathcal{L}_{\mathrm{ae}}$$ is the autoencoder reconstruction loss. Intuitively, the regularizer pulls the latent space toward the target prior $P(z)$ -- typically an isotropic Gaussian -- while the autoencoder term attempts to reconstruct the input from the latent embedding. These two objectives can conflict with each other and may induce failure modes or poor reconstruction [^8] [^9].
 
+Tolstikhin *et al.* proposed the Wasserstein Autoencoder (WAE) [^9] to improve upon the variational autoencoder architecture while preserving many of its desirable properties, including strong reconstruction ability, generative modeling capability, stable training, and a disentangled and interpretable latent space. Unlike the vanilla VAE, the WAE explicitly encourages the continuous marginal distribution $P_{\Phi}(z) = \int P_{\Phi}(z|x,y) d \mathrm{Pop}(x,y)$ to match the prior $P(z)$:
+
+$$
+\begin{align}
+\Phi^*, \Psi^* &= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}}\left[\mathcal{L}_{\mathrm{reg}} + \mathcal{L}_{\mathrm{ae}}\right] \\
+&= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}} \left[\lambda \mathcal{D}(P_{\Phi}(z), P(z)) + \mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x) \right],
+\end{align}
+$$
+
 ### References
 
 [^1]: Chen, T. Q., Rubanova, Y., Bettencourt, J., and Duvenaud, D. K. (2018). Neural ordinary differential equations. In *Advances in Neural Information Pro-cessing Systems*, pages 6572–6583.
