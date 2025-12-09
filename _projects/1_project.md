@@ -193,6 +193,22 @@ We can see that across all three tasks, the WAE model initially underperforms th
 
 We evaluate the model's performance on reconstruction, interpolation, and extrapolation after one epoch of training across EHR diagnosis sentences of varying lengths (Figure 5). Interpolation and extrapolation are assessed on sequences longer than 10, with 10% of the codes masked either within the sequence or at the end. Consequently, for EHR diagnosis sentences lengths ranging from 1 to 100, between 1 and 10 codes are masked. After one epoch of training, both the AE and WAE models can perfectly reconstruct EHR sequences shorter than 20, but their performance degrades for sequences longer than 50.
 
+<p style="text-align: center;">
+    <img src="/assets/img/evalValiStats.pdf" width="800px">
+</p>
+
+<div style="text-align: center;">
+  <div style="display: inline-block; text-align: left; width: 800px;">
+      Figure 5. Model evaluation, 90\% Highest Density Intervals (HDIs) of the rates are shown
+  </div>
+</div>
+
+<br>
+
+We also evaluate the latent space learned by the WAE model. The mean and covariance of the latent variable $z$ are estimated using 10,000 random samples from the validation set (Figure 6). Although not perfectly matched to the target, most dimensions of $z$ are approximately distributed as independent Gaussian variables, indicating substantial disentanglement. The variances have not yet converged to the target value of 1 (Figure 7, selected dimensions), but we expect closer alignment with additional training epochs.
+
+
+
 ### References
 
 [^1]: Chen, T. Q., Rubanova, Y., Bettencourt, J., and Duvenaud, D. K. (2018). Neural ordinary differential equations. In *Advances in Neural Information Pro-cessing Systems*, pages 6572–6583.
