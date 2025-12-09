@@ -13,7 +13,7 @@ related_publications: false
 <br>
 
 <div style="text-align: center;">
-  December, 2025
+  December, 2025 @ Pittsburgh, PA
 </div>
 
 <br>
@@ -100,13 +100,7 @@ $$
 
 where $$\mathcal{L}_{\mathrm{reg}}$$ is the regularization loss and $$\mathcal{L}_{\mathrm{ae}}$$ is the autoencoder reconstruction loss. Intuitively, the regularizer pulls the latent space toward the target prior $P(z)$ -- typically an isotropic Gaussian -- while the autoencoder term attempts to reconstruct the input from the latent embedding. These two objectives can conflict with each other and may induce failure modes or poor reconstruction [^8] [^9].
 
-Tolstikhin *et al.* proposed the Wasserstein Autoencoder (WAE) [^9] to improve upon the variational autoencoder architecture while preserving many of its desirable properties, including strong reconstruction ability, generative modeling capability, stable training, and a disentangled and interpretable latent space. Unlike the vanilla VAE, the WAE explicitly encourages the continuous marginal distribution
-
-$$
-P_{\Phi}(z) = \int P_{\Phi}(z|x,y) d \mathrm{Pop}(x,y)
-$$
-
-to match the prior $P(z)$:
+Tolstikhin *et al.* proposed the Wasserstein Autoencoder (WAE) [^9] to improve upon the variational autoencoder architecture while preserving many of its desirable properties, including strong reconstruction ability, generative modeling capability, stable training, and a disentangled and interpretable latent space. Unlike the vanilla VAE, the WAE explicitly encourages the continuous marginal distribution \\(P_{\Phi}(z) = \int P_{\Phi}(z|x,y) d \mathrm{Pop}(x,y)\\) to match the prior $P(z)$:
 
 $$
 \begin{align}
