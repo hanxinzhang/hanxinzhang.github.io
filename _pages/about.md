@@ -24,13 +24,13 @@ My interest: machine learning and its application in health and medicine, deep l
 
 **Current projects**
 
-[Digital mirror universe: advancing the digital twin framework for multiscale modeling](https://hanxinzhang.github.io/projects/1_project/)
+Dec 2025: [Digital mirror universe: advancing the digital twin framework for multiscale modeling](https://hanxinzhang.github.io/projects/1_project/)
 
 ![](/assets/img/WAE_Model_cropped.pdf)
 
 **Work Experience**
 
-Resident Physician in Neurology (Research Track)
+Resident Physician in Neurology (Research Track), 2021 - Present
 
 University of Pittsburgh Medical Center and the Department of Neurology, University of Pittsburgh
 School of Medicine, Pittsburgh, PA
