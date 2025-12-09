@@ -16,6 +16,8 @@ related_publications: false
   December, 2025
 </div>
 
+<br>
+
 ### Introduction
 
 A digital twin in healthcare research is a dynamic virtual model of an individual patient or biological system, created by integrating clinical, biological, and sensor data with computational simulations. Continuously updated to reflect a patient’s real-time state, it allows researchers to model disease progression, test interventions in silico, and predict treatment responses. This approach supports precision medicine by enabling more personalized and data-driven healthcare decisions.
@@ -98,7 +100,13 @@ $$
 
 where $$\mathcal{L}_{\mathrm{reg}}$$ is the regularization loss and $$\mathcal{L}_{\mathrm{ae}}$$ is the autoencoder reconstruction loss. Intuitively, the regularizer pulls the latent space toward the target prior $P(z)$ -- typically an isotropic Gaussian -- while the autoencoder term attempts to reconstruct the input from the latent embedding. These two objectives can conflict with each other and may induce failure modes or poor reconstruction [^8] [^9].
 
-Tolstikhin *et al.* proposed the Wasserstein Autoencoder (WAE) [^9] to improve upon the variational autoencoder architecture while preserving many of its desirable properties, including strong reconstruction ability, generative modeling capability, stable training, and a disentangled and interpretable latent space. Unlike the vanilla VAE, the WAE explicitly encourages the continuous marginal distribution $$P_{\Phi}(z) = \int P_{\Phi}(z|x,y) d \mathrm{Pop}(x,y)$$ to match the prior $P(z)$:
+Tolstikhin *et al.* proposed the Wasserstein Autoencoder (WAE) [^9] to improve upon the variational autoencoder architecture while preserving many of its desirable properties, including strong reconstruction ability, generative modeling capability, stable training, and a disentangled and interpretable latent space. Unlike the vanilla VAE, the WAE explicitly encourages the continuous marginal distribution
+
+$$
+P_{\Phi}(z) = \int P_{\Phi}(z|x,y) d \mathrm{Pop}(x,y)
+$$
+
+to match the prior $P(z)$:
 
 $$
 \begin{align}
@@ -113,7 +121,7 @@ $$
 \begin{align}
 \Phi^*, \Psi^* &= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}}\left[\mathcal{L}_{\mathrm{reg}} + \mathcal{L}_{\mathrm{ae}}\right] \\
 &= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}} \left[\lambda \mathcal{D_{\mathrm{W}}}(P_{\Phi}(z), P(z)) + \mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x) \right], \\
-\mathcal{D_{\mathrm{W}}}(P_{\Phi}(z), P(z)) &= \frac{1}{K} \sup_{||h||_{L} < K}\E_{z\sim P(z)} h(z) - \mathbb{E}_{z\sim P_{\Phi}(z)} h(z),
+\mathcal{D_{\mathrm{W}}}(P_{\Phi}(z), P(z)) &= \frac{1}{K} \sup_{||h||_{L} < K}\mathbb{E}_{z\sim P(z)} h(z) - \mathbb{E}_{z\sim P_{\Phi}(z)} h(z),
 \end{align}
 $$
 
