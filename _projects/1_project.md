@@ -92,7 +92,7 @@ $$
 \end{align}
 $$
 
-where $\mathcal{L}_{\mathrm{reg}}$ is the regularization loss and \mathcal{L}_{\mathrm{ae}} is the autoencoder reconstruction loss. Intuitively, the regularizer pulls the latent space toward the target prior $P(z)$ -- typically an isotropic Gaussian -- while the autoencoder term attempts to reconstruct the input from the latent embedding. These two objectives can conflict with each other and may induce failure modes or poor reconstruction [^8] [^9].
+where $$\mathcal{L}_{\mathrm{reg}}$$ is the regularization loss and $$\mathcal{L}_{\mathrm{ae}}$$ is the autoencoder reconstruction loss. Intuitively, the regularizer pulls the latent space toward the target prior $P(z)$ -- typically an isotropic Gaussian -- while the autoencoder term attempts to reconstruct the input from the latent embedding. These two objectives can conflict with each other and may induce failure modes or poor reconstruction [^8] [^9].
 
 ### References
 
