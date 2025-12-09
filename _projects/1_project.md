@@ -2,8 +2,8 @@
 layout: page
 title: "Digital mirror universe: advancing the digital twin framework for multiscale modeling"
 description: 
-img: assets/img/12.jpg
-importance: 1
+img: assets/img/WAE_Model_cropped.pdf
+importance:
 category:
 related_publications: false
 ---
