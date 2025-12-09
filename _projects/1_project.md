@@ -51,7 +51,7 @@ A naive baseline for the task described above is a conditional autoencoder (AE):
 
 $$
 \begin{align}
-\Phi^*, \Psi^* &= \mathop{\arg \min}\limits_{\Phi, \Psi} \mathbb{E}_{x, y \sim \mathrm{Pop}}\mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x).
+\Phi^*, \Psi^* &= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}}\mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x).
 \end{align}
 $$
 
@@ -79,7 +79,16 @@ An autoencoder is an outstanding architecture for learning a compressed represen
 
 $$
 \begin{align}
-y &= f \circ g (y) = f \circ f^{-1} (y).
+y &= f \circ g (y) = f \circ f^{-1} (y),
+\end{align}
+$$
+
+where the decoder is the inverse of the encoder. There exist many arbitrary choices of latent spaces that can embed our EHR sequences, and there is no natural way to sample from the latent space. Variational autoencoders (VAE) [^8] are known to address this issue by not only encoding the input but also disentangling and embedding it into a well-structured latent space:
+
+$$
+\begin{align}
+\Phi^*, \Psi^* &= \argmin_{\Phi, \Psi} \E_{x, y \sim \mathrm{Pop}}\left[\Loss_{\mathrm{reg}} + \Loss_{\mathrm{ae}}\right] \\
+&= \argmin_{\Phi, \Psi} \E_{x, y \sim \mathrm{Pop}} \left[\mathrm{KL}(P_{\Phi}(z|x,y), P(z)) + \E_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x) \right]
 \end{align}
 $$
 
@@ -98,3 +107,5 @@ $$
 [^6]: Schuster, M. and Paliwal, K. K. (1997). Bidirectional recurrent neural networks. *IEEE Transactions on Signal Processing*, 45(11):2673–2681.
 
 [^7]: Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., and Polosukhin, I. (2017). Attention is all you need. In *Advances in Neural Information Processing Systems*, pages 5998–6008.
+
+[^8]: Kingma, D. P. and Welling, M. (2013). Auto-encoding varia-tional bayes. *arXiv preprint arXiv:1312.6114.*
