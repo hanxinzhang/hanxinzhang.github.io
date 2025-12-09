@@ -58,10 +58,10 @@ $$
 Here, $y$ denotes an EHR diagnosis sentence, $x$ represents a confounding variable (e.g., sex), and $z$ is the latent representation of the EHR. The parameters $\Phi$ and $\Psi$ correspond to the encoder and decoder, respectively. Figure 1 illustrates the architecture of the autoencoder model. The multi-head gated recurrent units (GRUs) consist of several independent GRUs [^5], whose outputs are concatenated through a final aggregation layer. Similar design principles appear in bidirectional recurrent neural networks (RNNs) [^6], where two independent RNNs operating in opposite directions are stacked and their hidden states concatenated. Likewise, the Transformer model [^7] adopts a multi-head structure in which multiple self-attention heads are combined via concatenation.
 
 <p style="text-align: center;">
-    <img src="/assets/img/AE_Model_cropped.pdf" width="400">
+    <img src="/assets/img/AE_Model_cropped.pdf" width="600px">
 </p>
-<p style="text-align: center;">
-    <em>Figure 1. The structure of the autoencoder model. Both the encoder and the decoder are built with multi-head GRUs. The output of all heads of the encoder are concatenated into the latent variable $z$, and passed to decoder, head to head, to generate the conditional distribution $P(y|z, x)$ for loss computation.</em>
+<p style="text-align: center; width: 600px;">
+Figure 1. The structure of the autoencoder model. Both the encoder and the decoder are built with multi-head GRUs. The output of all heads of the encoder are concatenated into the latent variable $z$, and passed to decoder, head to head, to generate the conditional distribution $P(y|z, x)$ for loss computation.
 </p>
 
 ### References
