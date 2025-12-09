@@ -18,9 +18,9 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a computational biologist and modeler. My research focuses on machine understanding of large-scale health data, including insurance claims, electronic health records, textual and multi-omics data.
+I am a researcher and modeler in computational sciences. My research focuses on machine understanding of large-scale data, including insurance claims, electronic health records, textual and multi-omics data.
 
-My interest: machine learning and its application in health and medicine, deep learning, computational biology and genetics, Bayesian modeling
+My interest: machine learning and its application in health and medicine, deep learning, Bayesian modeling
 
 **Current projects**
 
