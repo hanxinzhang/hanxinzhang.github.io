@@ -26,6 +26,8 @@ My interest: machine learning and its application in health and medicine, deep l
 
 [Digital mirror universe: advancing the digital twin framework for multiscale modeling](https://hanxinzhang.github.io/projects/1_project/)
 
+![](/assets/img/WAE_Model_cropped.pdf)
+
 **Work Experience**
 
 Resident Physician in Neurology (Research Track)
