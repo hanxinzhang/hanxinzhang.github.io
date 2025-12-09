@@ -27,7 +27,7 @@ My interest: machine learning and its application in health and medicine, deep l
 Dec 2025: [Digital mirror universe: advancing the digital twin framework for multiscale modeling](https://hanxinzhang.github.io/projects/1_project/)
 
 <p style="text-align: center;">
-    <img src="/assets/img/WAE_Model_cropped.pdf" width="400px">
+    <img src="/assets/img/WAE_Model_cropped.pdf" width="600px">
 </p>
 
 **Work Experience**
