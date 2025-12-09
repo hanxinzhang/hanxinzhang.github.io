@@ -198,8 +198,8 @@ We evaluate the model's performance on reconstruction, interpolation, and extrap
 </p>
 
 <div style="text-align: center;">
-  <div style="display: inline-block; text-align: left; width: 800px;">
-      Figure 5. Model evaluation, 90\% Highest Density Intervals (HDIs) of the rates are shown
+  <div style="display: inline-block; text-align: left; width: 700px;">
+      Figure 5. Model evaluation, 90% Highest Density Intervals (HDIs) of the rates are shown
   </div>
 </div>
 
