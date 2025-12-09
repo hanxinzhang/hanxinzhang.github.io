@@ -57,6 +57,8 @@ $$
 
 Here, $y$ denotes an EHR diagnosis sentence, $x$ represents a confounding variable (e.g., sex), and $z$ is the latent representation of the EHR. The parameters $\Phi$ and $\Psi$ correspond to the encoder and decoder, respectively. Figure 1 illustrates the architecture of the autoencoder model. The multi-head gated recurrent units (GRUs) consist of several independent GRUs [^5], whose outputs are concatenated through a final aggregation layer. Similar design principles appear in bidirectional recurrent neural networks (RNNs) [^6], where two independent RNNs operating in opposite directions are stacked and their hidden states concatenated. Likewise, the Transformer model [^7] adopts a multi-head structure in which multiple self-attention heads are combined via concatenation.
 
+![Alt text](/assets/img/AE_Model_cropped.pdf "Figure 1")
+
 ### References
 
 [^1]: Chen, T. Q., Rubanova, Y., Bettencourt, J., and Duvenaud, D. K. (2018). Neural ordinary differential equations. In *Advances in Neural Information Pro-cessing Systems*, pages 6572–6583.
