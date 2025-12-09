@@ -73,6 +73,16 @@ A sample $y$ is fed into the encoder in reverse order, preceded by an ```<EOS>``
 
 To decode the latent variable $z$, we start from the embedded ```<SOS>``` and generate words recurrently. A confounding factor $x$ is fed to both the encoder and the decoder as a conditional variable. We expect the latent variable $z$ to be $x$-irrelevant. In the current setting, we only include sex as a confounding factor, coded by $−1$ and $1$ for males and females.
 
+### Model 1: Wasserstein Autoencoder
+
+An autoencoder is an outstanding architecture for learning a compressed representation. However, there is little constraint imposed on the latent space, so a high-performance autoencoder can degenerate into a copy network that simply learns an identity function:
+
+$$
+\begin{align}
+y &= f \circ g (y) = f \circ f^{-1} (y).
+\end{align}
+$$
+
 ### References
 
 [^1]: Chen, T. Q., Rubanova, Y., Bettencourt, J., and Duvenaud, D. K. (2018). Neural ordinary differential equations. In *Advances in Neural Information Pro-cessing Systems*, pages 6572–6583.
