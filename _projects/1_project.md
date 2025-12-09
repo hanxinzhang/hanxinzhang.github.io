@@ -235,11 +235,11 @@ We also evaluate the latent space learned by the WAE model. The mean and covaria
 
 The current models and results remain suboptimal. As next steps, we will continue refining the model and tuning hyperparameters based on these findings. We may also need to reconsider several aspects of the current design.
 
-#### Dimensionality choice
+<ins>Dimensionality choice</ins>
 
 The current dimensionality setting may be too large for downstream tasks. We attempted to add a compression module after the encoder in the WAE model. However, a more sophisticated design is needed to achieve better performance.
 
-#### Time, location, sex, and other covariates
+<ins>Time, location, sex, and other covariates</ins>
 
 We may need to develop better methods to incorporate such information into our model. Depending on the downstream use of the latent variable, we aim to revise the model so that it becomes covariate-invariant. For example, in the current model, enrollment time is encoded in the latent variable; however, for genetic-related tasks, we may not want the latent representation to contain such information, as insurance enrollment dates are not meaningfully associated with genetics.
 
