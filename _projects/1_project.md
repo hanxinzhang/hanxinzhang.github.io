@@ -62,9 +62,9 @@ Here, $y$ denotes an EHR diagnosis sentence, $x$ represents a confounding variab
 </p>
 
 <div style="text-align: center;">
-  <p style="text-align: left; width: 600px;">
+  <div style="display: inline-block; text-align: left; width: 600px;">
       Figure 1. The structure of the autoencoder model. Both the encoder and the decoder are built with multi-head GRUs. The output of all heads of the encoder are concatenated into the latent variable $z$, and passed to decoder, head to head, to generate the conditional distribution $P(y|z, x)$ for loss computation.
-  </p>
+  </div>
 </div>
 
 
