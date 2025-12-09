@@ -63,11 +63,11 @@ Here, $y$ denotes an EHR diagnosis sentence, $x$ represents a confounding variab
 
 <div style="text-align: center;">
   <div style="display: inline-block; text-align: left; width: 600px;">
-      Figure 1. The structure of the autoencoder model. Both the encoder and the decoder are built with multi-head GRUs. The output of all heads of the encoder are concatenated into the latent variable $z$, and passed to decoder, head to head, to generate the conditional distribution $P(y|z, x)$ for loss computation.
+      Figure 1. The structure of an autoencoder model. Both the encoder and the decoder are built with multi-head GRUs. The output of all heads of the encoder are concatenated into the latent variable $z$ and passed to the decoder, head to head, to generate the conditional distribution $P(y|z, x)$ for loss computation.
   </div>
 </div>
 
-
+A sample $y$ is fed into the encoder in reverse order, preceded by an ```<EOS>``` token. For each token ```Diagnosis_code:Age:Time```, we embed the diagnosis–age and time components separately using lookup embedding layers. Specifically, a condition observed within a particular age group is treated as a single diagnosis–age token. We consider 605 conditions and discretize age into 24 groups (0-4, 5–9, ..., 115–119), together with ``<SOS>```, ``<EOS>```, and ``<PAD>```}, yielding a total vocabulary size of 14,523 for the diagnosis–age embedding layer. Embedding diagnosis and age jointly is motivated by the fact that the same disease occurring at different ages may differ substantially in etiology, pathology, and epidemiology -- for example, early-onset versus late-onset Alzheimer's disease. Time is embedded by treating the week number, relative to the start of the dataset, as a categorical variable and mapping it through a separate lookup embedding table.
 
 ### References
 
