@@ -87,8 +87,8 @@ where the decoder is the inverse of the encoder. There exist many arbitrary choi
 
 $$
 \begin{align}
-\Phi^*, \Psi^* &= \argmin_{\Phi, \Psi} \E_{x, y \sim \mathrm{Pop}}\left[\Loss_{\mathrm{reg}} + \Loss_{\mathrm{ae}}\right] \\
-&= \argmin_{\Phi, \Psi} \E_{x, y \sim \mathrm{Pop}} \left[\mathrm{KL}(P_{\Phi}(z|x,y), P(z)) + \E_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x) \right]
+\Phi^*, \Psi^* &= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}}\left[\mathcal{L}_{\mathrm{reg}} + \mathcal{L}_{\mathrm{ae}}\right] \\
+&= \mathop{\arg \min}\limits_{\Phi, \Psi} \ \mathbb{E}_{x, y \sim \mathrm{Pop}} \left[\mathrm{KL}(P_{\Phi}(z|x,y), P(z)) + \mathbb{E}_{z \sim P_{\Phi}(z|y, x)} -\log P_{\Psi}(y|z, x) \right]
 \end{align}
 $$
 
