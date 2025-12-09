@@ -151,6 +151,26 @@ where $P(z)$, the prior or target distribution, is chosen to be an isotropic Gau
   </div>
 </div>
 
+### Training and preliminary results
+
+We design four tasks -- reconstruction, interpolation, extrapolation, and generation -- to evaluate the capability of the model (Figure 3). The reconstruction task assesses what proportion of information, including both diagnosis–age and time, can be recovered from the latent variable $z$. Note that in Figure 3, diagnosis–age refers to a diagnosis at an exact age; however, in practice, we group ages into 5-year intervals to reduce the vocabulary size and simplify computation.
+
+For the interpolation task, a subset of diasease–age codes within the input sequence is randomly masked (replaced by ```<PAD>```), and we evaluate the model's ability to impute the missing codes from the latent representation. The extrapolation task is similar, except that only the last few diagnosis–age codes at the end of the sequence are masked.
+
+Finally, if the model successfully embeds sequences into the target latent space (e.g., an isotropic Gaussian), we can directly generate fully synthetic sequences by sampling random Gaussian $z$ and passing it through the decoder.
+
+The training stage is self-supervised (Figure 3). For sequences with length greater than 10, a fixed proportion (currently 10%) of disease–age codes at both the end and within the sequence are randomly masked in the input to facilitate training.
+
+<p style="text-align: center;">
+    <img src="/assets/img/task_scheme_cropped2.pdf" width="800px">
+</p>
+
+<div style="text-align: center;">
+  <div style="display: inline-block; text-align: left; width: 800px;">
+      Figure 3. The scheme of training phase and desired tasks.
+  </div>
+</div>
+
 ### References
 
 [^1]: Chen, T. Q., Rubanova, Y., Bettencourt, J., and Duvenaud, D. K. (2018). Neural ordinary differential equations. In *Advances in Neural Information Pro-cessing Systems*, pages 6572–6583.
