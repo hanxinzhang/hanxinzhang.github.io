@@ -22,6 +22,10 @@ I am a computational biologist and modeler. My research focuses on machine under
 
 My interest: machine learning and its application in health and medicine, deep learning, computational biology and genetics, Bayesian modeling
 
+**Current projects**
+
+[Digital mirror universe: advancing the digital twin framework for multiscale modeling](https://hanxinzhang.github.io/projects/1_project/)
+
 **Work Experience**
 
 Resident Physician in Neurology (Research Track)
